@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../Home/firebase.init';
+import SocialLogin from './SocialLogin';
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const navigate = useNavigate()
@@ -85,11 +86,11 @@ const Login = () => {
           </div>
         
           
-          <input  className='btn w-full max-w-xs text-black' type="submit" value="Login" />
+          <input  className='btn w-full max-w-xs text-white' type="submit" value="Login" />
     </form>
     {errorMassage}
     <div className="divider text-black">OR</div>
- 
+     <SocialLogin></SocialLogin>
     <p><small>New to The AutoMobile <Link  className='text-blue-600' to='/signup'>Create Account</Link></small></p>
 
     </div>

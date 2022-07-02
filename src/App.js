@@ -8,15 +8,16 @@ import Navbar from './Pages/Navbar/Navbar';
 import Complete from './Pages/Complete/Complete';
 import Clander from './Pages/Home/Clander';
 import Updatetodo from './Pages/Home/Updatetodo';
+import RequireAuth from './Pages/Login/RequireAuth';
 
 function App() {
   return (
     <div className='max-w-7xl mx-auto'>
       <Navbar/>
        <Routes>
-        <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/complete' element={<Complete></Complete>}></Route>
-        <Route path='/clander' element={<Clander></Clander>}></Route>
+        <Route path='/' element={<RequireAuth><Home></Home></RequireAuth>}></Route>
+        <Route path='/complete' element={<RequireAuth><Complete></Complete></RequireAuth>}></Route>
+        <Route path='/clander' element={<RequireAuth><Clander></Clander></RequireAuth>}></Route>
         <Route path='/update' element={<Updatetodo></Updatetodo>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>

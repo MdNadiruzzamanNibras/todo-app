@@ -3,6 +3,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../Home/firebase.init';
+import SocialLogin from './SocialLogin';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -107,12 +108,12 @@ const SignUp = () => {
       </div>
     
       
-      <input  className='btn w-full max-w-xs text-black' type="submit" value="Signup" />
+      <input  className='btn w-full max-w-xs text-white' type="submit" value="Signup" />
 </form>
 {errorMassage}
 <div className="divider text-black">OR</div>
-
-
+   <SocialLogin/>
+  
 </div>
 </div>
 </div>

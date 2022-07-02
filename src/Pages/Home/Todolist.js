@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Todolist = () => { 
     const [user] = useAuthState(auth);
-    const [first, setFirst] = useState('');
+    const [enterkey, setEnterkey] = useState('');
     const navigate = useNavigate()
     const additem = async(e) =>{
         e.preventDefault();
@@ -17,7 +17,7 @@ const Todolist = () => {
             email: user?.email,
             todo: todo
         }
-        fetch('http://localhost:5000/todos',{
+        fetch('https://honest-eh-82732.herokuapp.com/todos',{
             method:'POST',
             headers: {
                 'content-type': 'application/json',
@@ -27,7 +27,7 @@ const Todolist = () => {
         .then(res=>res.json())
         .then(data=>{
             if(data.insertedId){
-                toast.success('Great add your todo item')
+                toast.success('Great add your task item')
             }
             else{
                 toast.error('Something is Wrong')
@@ -47,7 +47,7 @@ const Todolist = () => {
     const deleteTodo =id=>{
         const processed = window.confirm('Are you sure item')
         if(processed){
-            const url= `http://localhost:5000/tododel/${id}`
+            const url= `https://honest-eh-82732.herokuapp.com/tododel/${id}`
             fetch(url,{
                 method:'DELETE',
                
@@ -69,19 +69,19 @@ const Todolist = () => {
     return (
         <div className='card w-96 bg-base-100 shadow-xl my-20 mx-auto' >
         <div className="card-body">
-           <h1>Todo List</h1>
+           <h1 className='text-center text-3xl font-bold'>Task List</h1>
             <form onSubmit={additem}>
-                <input type="text" name='todo' className="input input-bordered w-full max-w-xs"  value={first}
-          onChange={e => setFirst(e.target.value)}
+                <input type="text" name='todo' className="input input-bordered w-full max-w-xs"  value={enterkey}
+          onChange={e => setEnterkey(e.target.value)}
           autoComplete="off" />
-                <button>Add</button>
+                <button className='btn btn-active my-3 flex justify-center'>Add Task</button>
             </form>
-            <div className='todo-list'>
-                {items && items?.map(item=><div className='flex justify-between align-middle my-1'>
+            <div className='Task-list'>
+                {items && items?.map(item=><div className='flex justify-between align-middle text-lg font-semibold my-1'>
                  <input type="checkbox" name="" id=""  className='mr-1'/>
                     <p className='item-content'>{item.todo}</p>
-                    <button className='update' onClick={updateNavigate}>update</button>
-                    <button onClick={()=>deleteTodo(item._id)} className='bg-red-600 mx-2 px-4 bodder text-white'>Delete</button>
+                    <button style={{borderRadius: '50px'}} className='btn-sm bg-green-600 px-5 text-white' onClick={updateNavigate}>Edit</button>
+                    <button style={{borderRadius: '50px'}} onClick={()=>deleteTodo(item._id)} className='bg-red-600 mx-2 px-4 btn-sm bodder text-white'>Delete</button>
                 </div>)}
                
             </div>

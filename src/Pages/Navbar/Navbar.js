@@ -18,7 +18,7 @@ const Navbar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/complete">Complete</Link></li>
         <li><Link to="/clander">Clander</Link></li>
-        <li>{user ? <button  onClick={logout}  className="btn btn-active btn-ghost">Sign Out</button>
+        <li>{user ? <button style={{border:'0'}} onClick={logout}  className="btn btn-ghost bg-white ">Log Out</button>
 :<Link to="/login">Login</Link>}</li>
     </>
     return (
