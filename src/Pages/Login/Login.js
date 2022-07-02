@@ -91,7 +91,7 @@ const Login = () => {
     {errorMassage}
     <div className="divider text-black">OR</div>
      <SocialLogin></SocialLogin>
-    <p><small>New to The AutoMobile <Link  className='text-blue-600' to='/signup'>Create Account</Link></small></p>
+    <p><small>New to Todo App <Link  className='text-blue-600' to='/signup'>Create Account</Link></small></p>
 
     </div>
   </div>
